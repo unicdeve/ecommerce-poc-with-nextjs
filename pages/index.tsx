@@ -1,8 +1,13 @@
 import type { NextPage } from 'next';
-import '../styles/Home.module.scss';
+import FeaturedProduct from '../components/featured-product/FeaturedProduct';
+import '../styles/Home.module.css';
 
 const Home: NextPage = () => {
-	return <div></div>;
+	return (
+		<div>
+			<FeaturedProduct />
+		</div>
+	);
 };
 
 export default Home;
