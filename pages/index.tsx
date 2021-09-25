@@ -1,12 +1,8 @@
 import type { NextPage } from 'next';
-import '../assets/styles/Home.module.scss';
+import '../styles/Home.module.scss';
 
 const Home: NextPage = () => {
-	return (
-		<div>
-			<h1>Home</h1>
-		</div>
-	);
+	return <div></div>;
 };
 
 export default Home;
