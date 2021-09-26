@@ -20,6 +20,56 @@ a {
 	box-sizing: border-box;
 }
 
-.my-app-container {
-	margin: 0 92px;
+.container {
+	padding: 0 92px;
+}
+
+.h-1 {
+	font-size: 32px;
+	font-weight: bold;
+}
+
+.h-3 {
+	font-size: 22px;
+}
+
+.p-1 {
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 27px;
+	color: #656565;
+}
+
+.hr-1 {
+	border: 1px solid #e4e4e4;
+}
+
+.hr-4 {
+	border: 2px solid #e4e4e4;
+}
+
+.d-flex {
+	display: flex;
+}
+
+.justify-between {
+	justify-content: space-between;
+}
+
+.justify-center {
+	justify-content: center;
+}
+
+.align-between {
+	align-items: space-between;
+}
+
+.align-center {
+	align-items: center;
+}
+
+@media (max-width: 414px) {
+	.container {
+		padding: 0 18px;
+	}
 }

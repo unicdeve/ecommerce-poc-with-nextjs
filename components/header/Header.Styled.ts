@@ -7,4 +7,13 @@ export const StyledHeader = styled.header`
 	padding-top: 20px;
 	padding-bottom: 20px;
 	border-bottom: 4px solid #e4e4e4;
+
+	&.container {
+	}
+
+	@media (max-width: 414px) {
+		&.container {
+			margin: 0;
+		}
+	}
 `;

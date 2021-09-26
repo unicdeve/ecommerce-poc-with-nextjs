@@ -5,9 +5,9 @@ import { StyledFeaturedProduct } from './FeaturedProduct.Styled';
 
 const FeaturedProduct: FC = () => {
 	return (
-		<StyledFeaturedProduct>
+		<StyledFeaturedProduct className='container'>
 			<div className='header'>
-				<h1>Samurai King Resting</h1>
+				<h1 className='h-1'>Samurai King Resting</h1>
 
 				<AddToCartBtn />
 			</div>
@@ -23,12 +23,16 @@ const FeaturedProduct: FC = () => {
 				<div className='img-tag'>Photo of the day</div>
 			</div>
 
+			<div className='add-to-cart-mb'>
+				<AddToCartBtn />
+			</div>
+
 			<div className='product-info'>
 				<div className='left'>
-					<h3>About the Samurai King Resting</h3>
+					<h3 className='h-3'>About the Samurai King Resting</h3>
 					<span>Pet</span>
 
-					<p>
+					<p className='p-1'>
 						So how did the classical Latin become so incoherent? According to
 						McClintock, a 15th century typesetter likely scrambled part of
 						Cicero De Finibus in order to provide placeholder text to mockup
@@ -40,7 +44,7 @@ const FeaturedProduct: FC = () => {
 					</p>
 				</div>
 				<div className='right preoduct-recommendations'>
-					<h3>People also buy</h3>
+					<h3 className='h-3'>People also buy</h3>
 
 					<div className='products'>
 						<div className='img-wrap'>
@@ -66,6 +70,12 @@ const FeaturedProduct: FC = () => {
 								layout='fill'
 							/>
 						</div>
+					</div>
+
+					<div className='details'>
+						<h3 className='h-3'>Details</h3>
+						<span>Size: 1020 x 1020 pixel</span>
+						<span>Size: 15 mb</span>
 					</div>
 				</div>
 			</div>
