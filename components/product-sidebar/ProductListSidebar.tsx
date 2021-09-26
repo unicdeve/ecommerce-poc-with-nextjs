@@ -17,6 +17,8 @@ const ProductListSidebar: FC = () => {
 				))}
 			</div>
 
+			<hr className='hr-1' />
+
 			<h3 className='h-3'>Price range</h3>
 
 			<div className='categories d-flex flex-col'>

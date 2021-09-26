@@ -7,11 +7,14 @@ export const StyledProductList = styled.div`
 		width: 100%;
 
 		aside {
-			width: 35%;
+			width: 23%;
 		}
 
 		.product-list {
-			width: 65%;
+			width: 72%;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
 		}
 	}
 
@@ -23,6 +26,7 @@ export const StyledProductList = styled.div`
 
 			.product-list {
 				width: 100%;
+				flex-direction: column;
 			}
 		}
 	}
