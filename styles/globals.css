@@ -45,7 +45,7 @@ a {
 }
 
 .hr-1 {
-	border: 1px solid #e4e4e4;
+	border: 0.5px solid #e4e4e4;
 }
 
 .hr-4 {
@@ -54,6 +54,10 @@ a {
 
 .d-flex {
 	display: flex;
+}
+
+.flex-col {
+	flex-direction: column;
 }
 
 .justify-between {
