@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledFeaturedProduct = styled.div`
+	margin-bottom: 30px;
+
 	.header {
 		width: 100%;
 		display: flex;
