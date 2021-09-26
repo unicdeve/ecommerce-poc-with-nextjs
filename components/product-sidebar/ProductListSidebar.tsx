@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { categories } from '../../mock-up/categories.mock';
-import { priceRanges } from '../../mock-up/price-ranges.mock';
+import { categories } from '../../mock-ups/categories.mock';
+import { priceRanges } from '../../mock-ups/price-ranges.mock';
 import { StyledProductListSidebar } from './ProductListSidebar.Styled';
 
 const ProductListSidebar: FC = () => {

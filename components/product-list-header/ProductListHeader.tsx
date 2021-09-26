@@ -4,7 +4,7 @@ import { StyledProductListHeader } from './ProductListHeader.Styled';
 
 const ProductListHeader: FC = () => {
 	return (
-		<StyledProductListHeader className='d-flex justify-between'>
+		<StyledProductListHeader className='d-flex justify-between align-center'>
 			<h2 className='h-2'>
 				Photography / <span>Premium Photos</span>
 			</h2>

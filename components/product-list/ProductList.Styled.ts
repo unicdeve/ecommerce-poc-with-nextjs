@@ -16,5 +16,14 @@ export const StyledProductList = styled.div`
 	}
 
 	@media (max-width: 414px) {
+		.products-container {
+			aside {
+				display: none;
+			}
+
+			.product-list {
+				width: 100%;
+			}
+		}
 	}
 `;
