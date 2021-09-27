@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { FC } from 'react';
-import { IProduct } from '../../contexts/state';
+import { IProduct, useAppStateContext } from '../../contexts/state';
 import AddToCartBtn from '../add-to-cart-btn/AddToCartBtn';
 import { StyledProductCard } from './ProductCard.Styled';
 
@@ -9,6 +9,10 @@ interface IProps {
 }
 
 const ProductCard: FC<IProps> = ({ product }) => {
+	let { addToCart, cart } = useAppStateContext();
+
+	const inCart = !!cart.filter((item) => item.id === product.id).length;
+
 	return (
 		<StyledProductCard>
 			<div className='img-wrap'>
@@ -24,7 +28,7 @@ const ProductCard: FC<IProps> = ({ product }) => {
 				)}
 
 				<div className='add-to-cart-wrapper'>
-					<AddToCartBtn />
+					<AddToCartBtn onClick={() => addToCart(product)} inCart={inCart} />
 				</div>
 			</div>
 
