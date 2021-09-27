@@ -1,9 +1,14 @@
 import Image from 'next/image';
 import { FC } from 'react';
+import { IProduct } from '../../contexts/state';
 import AddToCartBtn from '../add-to-cart-btn/AddToCartBtn';
 import { StyledProductCard } from './ProductCard.Styled';
 
-const ProductCard: FC = () => {
+interface IProps {
+	product: IProduct;
+}
+
+const ProductCard: FC<IProps> = ({ product }) => {
 	return (
 		<StyledProductCard>
 			<div className='img-wrap'>

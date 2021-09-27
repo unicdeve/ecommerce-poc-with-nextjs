@@ -1,11 +1,25 @@
 import type { GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import FeaturedProduct from '../components/featured-product/FeaturedProduct';
 import ProductList from '../components/product-list/ProductList';
+import { IProduct, useAppStateContext } from '../contexts/state';
+import data from '../mock-ups/products.json';
 import styles from '../styles/Home.module.css';
 
-const Home: NextPage = () => {
+interface IProps {
+	products: IProduct[];
+}
+
+const Home: NextPage<IProps> = ({ products }) => {
 	const { isFallback } = useRouter();
+	const { setProducts } = useAppStateContext();
+
+	useEffect(() => {
+		if (products) {
+			setProducts(products);
+		}
+	}, [products, setProducts]);
 
 	if (isFallback) {
 		return <div>Loading...</div>;
@@ -23,11 +37,12 @@ const Home: NextPage = () => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-	// ...
+	const products = data.products;
 
 	return {
 		props: {
 			fallback: true,
+			products,
 		},
 	};
 };

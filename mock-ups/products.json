@@ -1,0 +1,76 @@
+{
+	"products": [
+		{
+			"id": "Red Bench",
+			"name": "Red Bench",
+			"category": "people",
+			"price": 3.89,
+			"currency": "USD",
+			"dimmentions": {
+				"width": 1020,
+				"height": 1020
+			},
+			"image": {
+				"src": "",
+				"alt": ""
+			},
+			"bestseller": true,
+			"featured": false,
+			"details": null
+		},
+		{
+			"id": "Egg Balloon",
+			"name": "Egg Balloon",
+			"category": "food",
+			"price": 93.89,
+			"currency": "USD",
+			"dimmentions": {
+				"width": 1020,
+				"height": 1020
+			},
+			"image": {
+				"src": "",
+				"alt": ""
+			},
+			"bestseller": false,
+			"featured": false,
+			"details": null
+		},
+		{
+			"id": "Man",
+			"name": "Man",
+			"category": "people",
+			"price": 100,
+			"currency": "USD",
+			"dimmentions": {
+				"width": 1020,
+				"height": 1020
+			},
+			"image": {
+				"src": "",
+				"alt": ""
+			},
+			"bestseller": false,
+			"featured": false,
+			"details": null
+		},
+		{
+			"id": "Architecture",
+			"name": "Architecture",
+			"category": "landmarks",
+			"price": 101,
+			"currency": "USD",
+			"dimmentions": {
+				"width": 1020,
+				"height": 1020
+			},
+			"image": {
+				"src": "",
+				"alt": ""
+			},
+			"bestseller": false,
+			"featured": false,
+			"details": null
+		}
+	]
+}

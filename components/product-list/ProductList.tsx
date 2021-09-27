@@ -1,10 +1,13 @@
 import { FC } from 'react';
+import { useAppStateContext } from '../../contexts/state';
 import ProductCard from '../product-card/ProductCard';
 import ProductListHeader from '../product-list-header/ProductListHeader';
 import ProductListSidebar from '../product-sidebar/ProductListSidebar';
 import { StyledProductList } from './ProductList.Styled';
 
 const ProductList: FC = () => {
+	const { products } = useAppStateContext();
+
 	return (
 		<StyledProductList className='container'>
 			<ProductListHeader />
@@ -15,9 +18,9 @@ const ProductList: FC = () => {
 				</aside>
 
 				<div className='product-list'>
-					<ProductCard />
-					<ProductCard />
-					<ProductCard />
+					{products.map((product) => (
+						<ProductCard key={product.id} product={product} />
+					))}
 				</div>
 			</div>
 		</StyledProductList>
