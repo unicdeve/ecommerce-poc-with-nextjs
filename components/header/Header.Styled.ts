@@ -1,12 +1,24 @@
 import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
-	display: flex;
-	width: 100%;
-	justify-content: space-between;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	border-bottom: 4px solid #e4e4e4;
+	margin-bottom: 40px;
+
+	.content {
+		display: flex;
+		width: 100%;
+		justify-content: space-between;
+		padding-top: 20px;
+		padding-bottom: 25px;
+	}
+
+	.hr-wrap {
+		.hr {
+			width: 100%;
+			height: 0;
+			padding: 0 92px;
+			border: 2px solid #e4e4e4;
+		}
+	}
 
 	&.container {
 	}
@@ -14,6 +26,9 @@ export const StyledHeader = styled.header`
 	@media (max-width: 414px) {
 		&.container {
 			margin: 0;
+		}
+		.hr-wrap {
+			padding: 0;
 		}
 	}
 `;

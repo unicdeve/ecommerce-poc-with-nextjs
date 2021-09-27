@@ -77,7 +77,7 @@ const products: { products: IProduct[] } = {
 		{
 			id: 'Samurai King Restling',
 			name: 'Samurai King Restling',
-			category: 'landmarks',
+			category: 'Pet',
 			price: 101,
 			currency: 'USD',
 			image: {

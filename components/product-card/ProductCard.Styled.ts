@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
 export const StyledProductCard = styled.div`
+	width: 280px;
+	height: auto;
 	margin-bottom: 40px;
 
 	.img-wrap {
 		position: relative;
-		width: 280px;
+		width: 100%;
 		height: 390px;
 
 		span {
@@ -54,14 +56,16 @@ export const StyledProductCard = styled.div`
 	}
 
 	@media (max-width: 1200px) {
+		width: 240px;
+
 		.img-wrap {
-			width: 240px;
 		}
 	}
 
 	@media (max-width: 414px) {
+		width: 100%;
+
 		.img-wrap {
-			width: 100%;
 			height: 502px;
 		}
 	}
