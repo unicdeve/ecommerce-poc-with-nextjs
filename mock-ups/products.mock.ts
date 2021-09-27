@@ -8,7 +8,7 @@ const products: { products: IProduct[] } = {
 			category: 'people',
 			price: 3.89,
 			currency: 'USD',
-			dimmentions: {
+			dimensions: {
 				width: 1020,
 				height: 1020,
 			},
@@ -26,7 +26,7 @@ const products: { products: IProduct[] } = {
 			category: 'food',
 			price: 93.89,
 			currency: 'USD',
-			dimmentions: {
+			dimensions: {
 				width: 1020,
 				height: 1020,
 			},
@@ -44,7 +44,7 @@ const products: { products: IProduct[] } = {
 			category: 'people',
 			price: 100,
 			currency: 'USD',
-			dimmentions: {
+			dimensions: {
 				width: 1020,
 				height: 1020,
 			},
@@ -62,7 +62,7 @@ const products: { products: IProduct[] } = {
 			category: 'landmarks',
 			price: 101,
 			currency: 'USD',
-			dimmentions: {
+			dimensions: {
 				width: 1020,
 				height: 1020,
 			},
@@ -84,20 +84,19 @@ const products: { products: IProduct[] } = {
 				src: 'https://s3-alpha-sig.figma.com/img/d578/0646/bea3c9f2aa2b94f1724c9124e6c9956e?Expires=1633910400&Signature=Hq6B5IYU3Qsc0UQX7iJzJ7LPo7wV9e4gTi3bKM2mI03k4fg9Wk3ShmZPRT9XE5O-LFn8F0dAcj5dpvvZ5gg-DNWM7sRZTJoxAWkO9b9DaJcfAGzohicZGEUx8BPMROiHQskzKmoS1ji0idRlZfMw1mcIQiw9HtU1dlFtHDqWRsCzp9avXQ6BtM6~-Yy35HxFTvYM~L2DCCz8pkbPXJF7q3qD66oxwNv09RDMtPWSid~r9La8l87tcyjdk-HVZ9N1vIn5NbQ4v8PN76fU0IDr-gMQZ2VjYQvg6ngUOorXvCaaE4PbF9x7bQruuF2l25T5bmhrTGSufs4c2Mrq1zF08w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA',
 				alt: 'Samurai King Restling',
 			},
-			dimmentions: {
+			dimensions: {
 				width: 1020,
 				height: 1020,
 			},
 			isBestseller: false,
 			featured: true,
 			details: {
-				dimmentions: {
+				dimensions: {
 					width: 1020,
 					height: 1020,
 				},
 				size: 15000,
-				description:
-					'So how did the classical Latin become so incoherent? According to McClintock, a 15th century typesetter likely',
+				description: `So how did the classical Latin become so incoherent? According to McClintock, a 15th century typesetter likely scrambled part of Cicero's De Finibus in order to provide placeholder text to mockup various fonts for a type specimen book.So how did the classical Latin become so incoherent? According to McClintock, a 15th century typesetter likely scrambled part of Cicero's De Finibus in order to provide placeholder`,
 				recommendations: [
 					{
 						src: 'https://s3-alpha-sig.figma.com/img/290e/abbe/1dbdf80f154ea4305f0d967d21a15c73?Expires=1633910400&Signature=Pvw~6DtycO6gtRsNRRAMHHE6EKthx5SBb2~J63HB7zaVk16pTA6uzCWF6szKg9355yE5vrm9zaaicVgObEZgUcYH~iFX-JfQC~7-PPE0~~W3yNyIIN0Usg~wUQkxyjA6SsD8fKZPqZQgDRkI7WfOCgAV~Da-XIOfxL73BLNCFmLEdh9-nfarFEwLRYETSu9CDkmsWx65w6aTK0NdzNtxe8OQTApXuYtPWP57FdwiVGUKX43uqq~7BcZfdZ44l1txOTTKWtHwGsx91XRSKbWPZT3HV4ZA50wpi56MWxLl~o--EmxFy0cIOPTbukmBvQVmO6UCCJR9ieFPrwXNfrkDVw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA',

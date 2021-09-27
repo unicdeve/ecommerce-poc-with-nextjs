@@ -18,6 +18,13 @@ interface IDimension {
 	height: number;
 }
 
+interface IDetails {
+	dimensions: IDimension;
+	size: number;
+	description: string;
+	recommendations: IImage[];
+}
+
 export interface IProduct {
 	id: string;
 	name: string;
@@ -25,10 +32,10 @@ export interface IProduct {
 	price: number;
 	currency: string;
 	image: IImage;
-	dimmentions: IDimension;
+	dimensions: IDimension;
 	isBestseller: boolean;
 	featured: boolean;
-	details?: any;
+	details: IDetails | null;
 }
 
 export interface IStateContext {

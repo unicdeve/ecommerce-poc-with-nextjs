@@ -25,11 +25,15 @@ const Home: NextPage<IProps> = ({ products }) => {
 		return <div>Loading...</div>;
 	}
 
+	let featuredProduct: IProduct;
+
+	featuredProduct = products.filter((p) => p.featured)[0];
+
 	return (
 		<div className={styles.homePage}>
-			<FeaturedProduct />
+			{featuredProduct && <FeaturedProduct featuredProduct={featuredProduct} />}
 
-			<hr className='hr-4' />
+			{featuredProduct && <hr className='hr-4' />}
 
 			<ProductList />
 		</div>

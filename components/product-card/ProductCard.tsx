@@ -9,7 +9,6 @@ interface IProps {
 }
 
 const ProductCard: FC<IProps> = ({ product }) => {
-	console.log(product.image.src);
 	return (
 		<StyledProductCard>
 			<div className='img-wrap'>
