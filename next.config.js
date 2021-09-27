@@ -2,6 +2,6 @@
 module.exports = {
 	reactStrictMode: true,
 	images: {
-		domains: ['s3-alpha-sig.figma.com'],
+		domains: ['s3-alpha-sig.figma.com', 'images.pexels.com'],
 	},
 };

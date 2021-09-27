@@ -8,19 +8,27 @@ import {
 	useState,
 } from 'react';
 
+interface IImage {
+	src: string;
+	alt: string;
+}
+
+interface IDimension {
+	width: number;
+	height: number;
+}
+
 export interface IProduct {
 	id: string;
 	name: string;
 	category: string;
 	price: number;
 	currency: string;
-	image: {
-		src: string;
-		alt: string;
-	};
-	bestseller: boolean;
+	image: IImage;
+	dimmentions: IDimension;
+	isBestseller: boolean;
 	featured: boolean;
-	details: any;
+	details?: any;
 }
 
 export interface IStateContext {

@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import FeaturedProduct from '../components/featured-product/FeaturedProduct';
 import ProductList from '../components/product-list/ProductList';
 import { IProduct, useAppStateContext } from '../contexts/state';
-import data from '../mock-ups/products.json';
+import data from '../mock-ups/products.mock';
 import styles from '../styles/Home.module.css';
 
 interface IProps {

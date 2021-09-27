@@ -36,6 +36,7 @@ export const StyledProductCard = styled.div`
 			font-size: 22px;
 			line-height: 24px;
 			color: #656565;
+			text-transform: capitalize;
 		}
 
 		h2 {
