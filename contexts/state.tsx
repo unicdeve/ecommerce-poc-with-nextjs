@@ -8,6 +8,7 @@ import {
 	useMemo,
 	useState,
 } from 'react';
+import { isBrowser } from '../utils/is-browser';
 
 interface IImage {
 	src: string;
@@ -49,11 +50,20 @@ export interface IStateContext {
 const AppStateContext = createContext<IStateContext>(undefined as any);
 
 export const AppStateProvider: FC<{}> = ({ children }) => {
+	const localCart: IProduct[] | [] = JSON.parse(
+		(isBrowser && localStorage.getItem('ecom_poc:cart')) || '[]'
+	);
+
 	const [products, setProducts] = useState<IProduct[]>([]);
-	const [cart, setCart] = useState<IProduct[]>([]);
+	const [cart, setCart] = useState<IProduct[]>(localCart);
 
 	const addToCart = useCallback((product: IProduct) => {
-		setCart((prev) => [product, ...prev]);
+		setCart((prev) => {
+			const newCart = [product, ...prev];
+			isBrowser &&
+				localStorage.setItem('ecom_poc:cart', JSON.stringify(newCart));
+			return newCart;
+		});
 	}, []);
 
 	const value = useMemo(
