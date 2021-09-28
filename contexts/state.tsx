@@ -81,10 +81,14 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 
 	const sortProducts = useCallback(
 		(sortBy: string, sortOrder: string) => {
-			const sortedProducts = sortAllProducts(products, sortBy, sortOrder);
+			const sortedProducts = sortAllProducts(
+				filteredProducts,
+				sortBy,
+				sortOrder
+			);
 			setProducts(sortedProducts);
 		},
-		[products]
+		[filteredProducts]
 	);
 
 	const onChangeSortBy = useCallback(

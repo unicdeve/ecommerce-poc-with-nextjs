@@ -98,15 +98,37 @@ export const StyledHeader = styled.header`
 		}
 	}
 
-	&.container {
-	}
-
 	@media (max-width: 414px) {
 		&.container {
 			margin: 0;
 		}
 		.hr-wrap {
 			padding: 0;
+		}
+		.cart-items {
+			padding-top: 10px;
+			top: 89px;
+			right: 0px;
+			max-height: 400px;
+
+			.item {
+				padding: 10px;
+				width: 98vw;
+
+				.title {
+					margin-right: 20px;
+
+					h5 {
+						font-weight: bold;
+						font-size: 18px;
+						margin: 10px 0 5px 0;
+					}
+
+					small {
+						font-size: 20px;
+					}
+				}
+			}
 		}
 	}
 `;

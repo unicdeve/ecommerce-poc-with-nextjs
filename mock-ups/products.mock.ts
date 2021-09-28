@@ -239,7 +239,7 @@ const products: { products: IProduct[] } = {
 		{
 			id: 'brown-horse',
 			name: 'Brown horse',
-			category: 'Pet',
+			category: 'pet',
 			price: 112,
 			currency: 'USD',
 			dimensions: {
@@ -293,7 +293,7 @@ const products: { products: IProduct[] } = {
 		{
 			id: 'Cows',
 			name: 'Cows',
-			category: 'Pet',
+			category: 'pet',
 			price: 112,
 			currency: 'USD',
 			dimensions: {
@@ -311,7 +311,7 @@ const products: { products: IProduct[] } = {
 		{
 			id: 'Bull',
 			name: 'Bull',
-			category: 'Pet',
+			category: 'pet',
 			price: 112,
 			currency: 'USD',
 			dimensions: {
@@ -329,7 +329,7 @@ const products: { products: IProduct[] } = {
 		{
 			id: 'baby cattle',
 			name: 'Baby cattle',
-			category: 'Pet',
+			category: 'pet',
 			price: 112,
 			currency: 'USD',
 			dimensions: {
@@ -347,7 +347,7 @@ const products: { products: IProduct[] } = {
 		{
 			id: 'Samurai King Restling',
 			name: 'Samurai King Restling',
-			category: 'Pet',
+			category: 'pet',
 			price: 101,
 			currency: 'USD',
 			image: {
