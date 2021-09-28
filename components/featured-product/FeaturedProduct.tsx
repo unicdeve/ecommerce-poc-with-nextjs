@@ -6,9 +6,10 @@ import { StyledFeaturedProduct } from './FeaturedProduct.Styled';
 
 interface IProps {
 	featuredProduct: IProduct;
+	openDropdown: () => void;
 }
 
-const FeaturedProduct: FC<IProps> = ({ featuredProduct }) => {
+const FeaturedProduct: FC<IProps> = ({ featuredProduct, openDropdown }) => {
 	let { addToCart, cart } = useAppStateContext();
 
 	const inCart = !!cart.filter((item) => item.id === featuredProduct.id).length;
@@ -19,7 +20,10 @@ const FeaturedProduct: FC<IProps> = ({ featuredProduct }) => {
 				<h1 className='h-1'>{featuredProduct.name}</h1>
 
 				<AddToCartBtn
-					onClick={() => addToCart(featuredProduct)}
+					onClick={() => {
+						addToCart(featuredProduct);
+						openDropdown();
+					}}
 					inCart={inCart}
 				/>
 			</div>
@@ -37,7 +41,10 @@ const FeaturedProduct: FC<IProps> = ({ featuredProduct }) => {
 
 			<div className='add-to-cart-mb'>
 				<AddToCartBtn
-					onClick={() => addToCart(featuredProduct)}
+					onClick={() => {
+						addToCart(featuredProduct);
+						openDropdown();
+					}}
 					inCart={inCart}
 				/>
 			</div>

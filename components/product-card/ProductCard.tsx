@@ -9,7 +9,7 @@ interface IProps {
 }
 
 const ProductCard: FC<IProps> = ({ product }) => {
-	let { addToCart, cart } = useAppStateContext();
+	let { addToCart, cart, openDropdown } = useAppStateContext();
 
 	const inCart = !!cart.filter((item) => item.id === product.id).length;
 
@@ -28,7 +28,13 @@ const ProductCard: FC<IProps> = ({ product }) => {
 				)}
 
 				<div className='add-to-cart-wrapper'>
-					<AddToCartBtn onClick={() => addToCart(product)} inCart={inCart} />
+					<AddToCartBtn
+						onClick={() => {
+							addToCart(product);
+							openDropdown();
+						}}
+						inCart={inCart}
+					/>
 				</div>
 			</div>
 

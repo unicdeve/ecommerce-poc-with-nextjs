@@ -1,14 +1,12 @@
 import Image from 'next/image';
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { useAppStateContext } from '../../contexts/state';
 import CartIcon from '../cart-icon/CartIcon';
 import { StyledHeader } from './Header.Styled';
 
 const Header: FC = () => {
-	const [openCartDropdown, setOpenCartDropdown] = useState<boolean>(false);
-	let { cart, clearCart } = useAppStateContext();
-
-	const openDropdown = () => setOpenCartDropdown((prev) => !prev);
+	let { cart, clearCart, openCartDropdown, openDropdown, closeDropdown } =
+		useAppStateContext();
 
 	return (
 		<StyledHeader>
@@ -18,7 +16,7 @@ const Header: FC = () => {
 			</div>
 
 			<div className={`cart-items ${openCartDropdown ? 'open' : ''}`}>
-				<div role='button' onClick={openDropdown} className='cancel-icon-wrap'>
+				<div role='button' onClick={closeDropdown} className='cancel-icon-wrap'>
 					<Image src='/images/cancel-icon.svg' alt='' width='18' height='18' />
 				</div>
 

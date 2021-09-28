@@ -13,7 +13,7 @@ interface IProps {
 
 const Home: NextPage<IProps> = ({ products }) => {
 	const { isFallback } = useRouter();
-	const { setProducts } = useAppStateContext();
+	const { setProducts, openDropdown } = useAppStateContext();
 
 	useEffect(() => {
 		if (products) {
@@ -31,7 +31,12 @@ const Home: NextPage<IProps> = ({ products }) => {
 
 	return (
 		<div className={styles.homePage}>
-			{featuredProduct && <FeaturedProduct featuredProduct={featuredProduct} />}
+			{featuredProduct && (
+				<FeaturedProduct
+					openDropdown={openDropdown}
+					featuredProduct={featuredProduct}
+				/>
+			)}
 
 			{featuredProduct && <hr className='hr-4' />}
 

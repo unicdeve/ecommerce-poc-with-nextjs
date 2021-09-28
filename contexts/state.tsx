@@ -46,6 +46,9 @@ export interface IStateContext {
 	cart: IProduct[];
 	addToCart: (cart: IProduct) => void;
 	clearCart: () => void;
+	openCartDropdown: boolean;
+	openDropdown: () => void;
+	closeDropdown: () => void;
 }
 
 const AppStateContext = createContext<IStateContext>(undefined as any);
@@ -57,6 +60,9 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 
 	const [products, setProducts] = useState<IProduct[]>([]);
 	const [cart, setCart] = useState<IProduct[]>(localCart);
+	const [openCartDropdown, setOpenCartDropdown] = useState<boolean>(false);
+	const openDropdown = () => setOpenCartDropdown(true);
+	const closeDropdown = () => setOpenCartDropdown(false);
 
 	const addToCart = useCallback((product: IProduct) => {
 		setCart((prev) => {
@@ -81,8 +87,11 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 			cart,
 			addToCart,
 			clearCart,
+			openCartDropdown,
+			openDropdown,
+			closeDropdown,
 		}),
-		[products, cart, addToCart, clearCart]
+		[products, cart, addToCart, clearCart, openCartDropdown]
 	);
 
 	return (
