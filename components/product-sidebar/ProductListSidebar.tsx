@@ -5,7 +5,7 @@ import { priceRanges } from '../../mock-ups/price-ranges.mock';
 import { StyledProductListSidebar } from './ProductListSidebar.Styled';
 
 const ProductListSidebar: FC = () => {
-	const { categories, onChangeCategories } = useAppStateContext();
+	const { onChangeCategories } = useAppStateContext();
 
 	return (
 		<StyledProductListSidebar>
@@ -18,7 +18,6 @@ const ProductListSidebar: FC = () => {
 							type='checkbox'
 							id={id}
 							name={name}
-							// value={categories[value]}
 							onChange={(e) => onChangeCategories(e.target.checked, value)}
 						/>
 						<label htmlFor={id}>{label}</label>

@@ -46,6 +46,7 @@ interface ICategories {
 }
 export interface IStateContext {
 	products: IProduct[];
+	filteredProducts: IProduct[];
 	setProducts: Dispatch<SetStateAction<IProduct[]>>;
 	cart: IProduct[];
 	addToCart: (cart: IProduct) => void;
@@ -144,7 +145,9 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 
 	const value = useMemo(
 		() => ({
-			products: filteredProducts.length > 0 ? filteredProducts : products,
+			products,
+			filteredProducts:
+				filteredProducts.length > 0 ? filteredProducts : products,
 			setProducts,
 			cart,
 			addToCart,

@@ -6,9 +6,9 @@ import ProductListSidebar from '../product-sidebar/ProductListSidebar';
 import { StyledProductList } from './ProductList.Styled';
 
 const ProductList: FC = () => {
-	let { products } = useAppStateContext();
+	let { filteredProducts } = useAppStateContext();
 
-	products = products.filter((p) => !p.featured);
+	const products = filteredProducts.filter((p) => !p.featured);
 
 	return (
 		<StyledProductList className='container'>
