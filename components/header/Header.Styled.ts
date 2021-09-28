@@ -2,6 +2,12 @@ import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
 	margin-bottom: 40px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: #fff;
+	z-index: 100;
 
 	.content {
 		display: flex;
