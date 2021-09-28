@@ -1,17 +1,26 @@
 import { FC } from 'react';
-import { categories } from '../../mock-ups/categories.mock';
+import { useAppStateContext } from '../../contexts/state';
+import { categories as productCategories } from '../../mock-ups/categories.mock';
 import { priceRanges } from '../../mock-ups/price-ranges.mock';
 import { StyledProductListSidebar } from './ProductListSidebar.Styled';
 
 const ProductListSidebar: FC = () => {
+	const { categories, onChangeCategories } = useAppStateContext();
+
 	return (
 		<StyledProductListSidebar>
 			<h3 className='h-3'>Category</h3>
 
 			<div className='categories d-flex flex-col'>
-				{categories.map(({ id, name, label, value }) => (
+				{productCategories.map(({ id, name, label, value }) => (
 					<div key={id} className='category-wrapper'>
-						<input type='checkbox' id={id} name={name} value={value} />
+						<input
+							type='checkbox'
+							id={id}
+							name={name}
+							// value={categories[value]}
+							onChange={(e) => onChangeCategories(e.target.checked, value)}
+						/>
 						<label htmlFor={id}>{label}</label>
 					</div>
 				))}

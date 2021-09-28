@@ -41,6 +41,9 @@ export interface IProduct {
 	details: IDetails | null;
 }
 
+interface ICategories {
+	[category: string]: boolean;
+}
 export interface IStateContext {
 	products: IProduct[];
 	setProducts: Dispatch<SetStateAction<IProduct[]>>;
@@ -54,6 +57,8 @@ export interface IStateContext {
 	sortProducts: (sortBy: string, sortOrder: string) => void;
 	onChangeSortBy: (e: any) => void;
 	onChangeSortOrder: () => void;
+	onChangeCategories: (checked: boolean, name: string) => void;
+	categories: ICategories;
 }
 
 const AppStateContext = createContext<IStateContext>(undefined as any);
@@ -63,6 +68,8 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 		(isBrowser && localStorage.getItem('ecom_poc:cart')) || '[]'
 	);
 	const [products, setProducts] = useState<IProduct[]>([]);
+	const [filteredProducts, setFilteredProducts] =
+		useState<IProduct[]>(products);
 	const [cart, setCart] = useState<IProduct[]>(localCart);
 	const [openCartDropdown, setOpenCartDropdown] = useState<boolean>(false);
 	const openDropdown = () => setOpenCartDropdown(true);
@@ -95,6 +102,26 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 		sortProducts(sortBy, value);
 	}, [sortOrder, sortBy, sortProducts]);
 
+	// category filtering feature
+	const [categories, setCategories] = useState<ICategories>({});
+
+	const onChangeCategories = useCallback(
+		(checked: boolean, category: string) => {
+			const newCategories = { [category]: checked, ...categories };
+			setCategories(newCategories);
+
+			const stringValue = Object.keys(newCategories)
+				.filter((key) => newCategories[key])
+				.join('');
+
+			const filteredProducts = products.filter((p) =>
+				stringValue.includes(p.category)
+			);
+			setFilteredProducts(filteredProducts);
+		},
+		[categories, products]
+	);
+
 	const addToCart = useCallback((product: IProduct) => {
 		setCart((prev) => {
 			const newCart = [product, ...prev];
@@ -113,7 +140,7 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 
 	const value = useMemo(
 		() => ({
-			products,
+			products: filteredProducts.length > 0 ? filteredProducts : products,
 			setProducts,
 			cart,
 			addToCart,
@@ -125,9 +152,12 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 			sortBy,
 			onChangeSortBy,
 			onChangeSortOrder,
+			onChangeCategories,
+			categories,
 		}),
 		[
 			products,
+			filteredProducts,
 			cart,
 			addToCart,
 			clearCart,
@@ -137,6 +167,8 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 			sortProducts,
 			onChangeSortOrder,
 			onChangeSortBy,
+			onChangeCategories,
+			categories,
 		]
 	);
 
