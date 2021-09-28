@@ -1,9 +1,6 @@
-.homePage hr {
-	margin: 0 92px;
+.homePage {
+	margin-top: 136px;
 }
 
 @media (max-width: 414px) {
-	.homePage hr {
-		margin: 0;
-	}
 }

@@ -45,6 +45,7 @@ export interface IStateContext {
 	setProducts: Dispatch<SetStateAction<IProduct[]>>;
 	cart: IProduct[];
 	addToCart: (cart: IProduct) => void;
+	clearCart: () => void;
 }
 
 const AppStateContext = createContext<IStateContext>(undefined as any);
@@ -66,14 +67,22 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 		});
 	}, []);
 
+	const clearCart = useCallback(() => {
+		setCart((_) => {
+			isBrowser && localStorage.removeItem('ecom_poc:cart');
+			return [];
+		});
+	}, []);
+
 	const value = useMemo(
 		() => ({
 			products,
 			setProducts,
 			cart,
 			addToCart,
+			clearCart,
 		}),
-		[products, cart, addToCart]
+		[products, cart, addToCart, clearCart]
 	);
 
 	return (

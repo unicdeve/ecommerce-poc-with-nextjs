@@ -3,13 +3,17 @@ import { FC } from 'react';
 import { useAppStateContext } from '../../contexts/state';
 import { StyledCartIcon } from './CartIcon.Styled';
 
-const CartIcon: FC = () => {
+interface IProps {
+	onClick: () => void;
+}
+
+const CartIcon: FC<IProps> = ({ onClick }) => {
 	let { cart } = useAppStateContext();
 
 	return (
-		<StyledCartIcon>
+		<StyledCartIcon className='cart-icon' role='button' onClick={onClick}>
 			<Image src='/images/shopping-cart.svg' alt='' layout='fill' />
-			<span>{cart.length}</span>
+			{cart.length > 0 && <span>{cart.length}</span>}
 		</StyledCartIcon>
 	);
 };
