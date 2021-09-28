@@ -19,6 +19,18 @@ export const StyledProductList = styled.div`
 		}
 	}
 
+	.pagination {
+		display: flex;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+		padding: 40px 0;
+
+		.page {
+			padding: 0 10px;
+		}
+	}
+
 	@media (max-width: 414px) {
 		.products-container {
 			aside {
@@ -31,4 +43,14 @@ export const StyledProductList = styled.div`
 			}
 		}
 	}
+`;
+
+export const PageNumber = styled.div<{
+	highlight: boolean;
+}>`
+	color: ${({ highlight }) => (highlight ? '#000000' : '#B4B4B4')};
+	font-size: 29px;
+	font-weight: ${({ highlight }) => (highlight ? 900 : 400)};
+	cursor: pointer;
+	text-align: center;
 `;
