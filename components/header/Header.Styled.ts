@@ -66,6 +66,10 @@ export const StyledHeader = styled.header`
 			}
 		}
 
+		.hr-1 {
+			width: 91%;
+		}
+
 		.item {
 			padding: 20px;
 			display: flex;

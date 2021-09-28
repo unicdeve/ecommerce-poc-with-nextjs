@@ -41,6 +41,8 @@ const Header: FC = () => {
 					<p>Cart is empty</p>
 				)}
 
+				<hr className='hr-1' />
+
 				<div className='btn-wrap'>
 					<button disabled={!cart.length} onClick={clearCart}>
 						CLEAR

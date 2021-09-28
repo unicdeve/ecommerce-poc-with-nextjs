@@ -9,6 +9,7 @@ import {
 	useState,
 } from 'react';
 import { isBrowser } from '../utils/is-browser';
+import { sortAllProducts } from '../utils/sort-products';
 
 interface IImage {
 	src: string;
@@ -73,20 +74,7 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 
 	const sortProducts = useCallback(
 		(sortBy: string, sortOrder: string) => {
-			const sortedProducts = products.sort((a, b) => {
-				if (sortBy === 'alphabetically') {
-					if (sortOrder === 'asc') {
-						return a.name > b.name ? 1 : -1;
-					}
-					return a.name < b.name ? 1 : -1;
-				} else {
-					if (sortOrder === 'asc') {
-						return a.price > b.price ? 1 : -1;
-					}
-					return a.price < b.price ? 1 : -1;
-				}
-			});
-
+			const sortedProducts = sortAllProducts(products, sortBy, sortOrder);
 			setProducts(sortedProducts);
 		},
 		[products]
