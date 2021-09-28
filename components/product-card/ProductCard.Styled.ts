@@ -20,6 +20,7 @@ export const StyledProductCard = styled.div`
 		}
 
 		.add-to-cart-wrapper {
+			visibility: hidden;
 			position: absolute;
 			bottom: 0;
 			left: 0;
@@ -27,6 +28,13 @@ export const StyledProductCard = styled.div`
 
 			button {
 				width: 100%;
+			}
+		}
+
+		&:hover {
+			.add-to-cart-wrapper {
+				visibility: visible;
+				transition: all ease-in-out 5.3s;
 			}
 		}
 	}
