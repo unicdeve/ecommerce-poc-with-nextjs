@@ -7,8 +7,8 @@ import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
-		<AppStateProvider>
-			<PaginationProvider>
+		<PaginationProvider>
+			<AppStateProvider>
 				<Head>
 					<title>Ecommerce PoC task</title>
 					<link rel='icon' href='/favicon.ico' />
@@ -18,8 +18,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 					<Header />
 					<Component {...pageProps} />
 				</div>
-			</PaginationProvider>
-		</AppStateProvider>
+			</AppStateProvider>
+		</PaginationProvider>
 	);
 }
 export default MyApp;

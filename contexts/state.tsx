@@ -5,11 +5,13 @@ import {
 	SetStateAction,
 	useCallback,
 	useContext,
+	useEffect,
 	useMemo,
 	useState,
 } from 'react';
 import { isBrowser } from '../utils/is-browser';
 import { sortAllProducts } from '../utils/sort-products';
+import { PAGINATE_BY, useProductPagination } from './pagination';
 
 interface IImage {
 	src: string;
@@ -142,6 +144,18 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 			return [];
 		});
 	}, []);
+
+	// Pagination calculation
+	const { pageOffset } = useProductPagination();
+
+	useEffect(() => {
+		const paginatedProduct = products.slice(
+			pageOffset,
+			pageOffset + PAGINATE_BY
+		);
+		setFilteredProducts(paginatedProduct);
+		isBrowser && window.scrollTo(0, 1000);
+	}, [pageOffset, products]);
 
 	const value = useMemo(
 		() => ({

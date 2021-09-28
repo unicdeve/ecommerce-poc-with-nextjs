@@ -1,6 +1,6 @@
 import { createContext, FC, useContext, useMemo } from 'react';
 import usePagination from '../hooks/usePagination';
-import { useAppStateContext } from './state';
+// import { useAppStateContext } from './state';
 
 export const PAGINATE_BY = 6;
 
@@ -16,9 +16,9 @@ interface IPaginationContext {
 const PaginationContext = createContext<IPaginationContext>(undefined as any);
 
 export const PaginationProvider: FC<{}> = ({ children }) => {
-	const { filteredProducts } = useAppStateContext();
+	// const { filteredProducts } = useAppStateContext();
 	const { next, prev, jumpTo, currentPage, lastPage, pageOffset } =
-		usePagination(filteredProducts.length, PAGINATE_BY);
+		usePagination(20, PAGINATE_BY);
 
 	const value = useMemo(
 		() => ({ next, prev, jumpTo, currentPage, lastPage, pageOffset }),

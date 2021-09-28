@@ -34,7 +34,6 @@ export const StyledProductCard = styled.div`
 		&:hover {
 			.add-to-cart-wrapper {
 				visibility: visible;
-				transition: all ease-in-out 5.3s;
 			}
 		}
 	}
@@ -65,9 +64,6 @@ export const StyledProductCard = styled.div`
 
 	@media (max-width: 1200px) {
 		width: 240px;
-
-		.img-wrap {
-		}
 	}
 
 	@media (max-width: 414px) {
@@ -75,6 +71,10 @@ export const StyledProductCard = styled.div`
 
 		.img-wrap {
 			height: 502px;
+
+			.add-to-cart-wrapper {
+				visibility: visible;
+			}
 		}
 	}
 `;

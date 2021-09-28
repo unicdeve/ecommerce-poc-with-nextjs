@@ -25,6 +25,7 @@ export const StyledProductList = styled.div`
 		justify-content: center;
 		align-items: center;
 		padding: 40px 0;
+		padding-left: 23%;
 
 		.page {
 			padding: 0 10px;
@@ -41,6 +42,11 @@ export const StyledProductList = styled.div`
 				width: 100%;
 				flex-direction: column;
 			}
+		}
+
+		.pagination {
+			padding: 40px 0;
+			padding-left: 0;
 		}
 	}
 `;
