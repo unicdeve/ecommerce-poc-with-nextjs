@@ -49,6 +49,10 @@ export interface IStateContext {
 	openCartDropdown: boolean;
 	openDropdown: () => void;
 	closeDropdown: () => void;
+	sortBy: string;
+	sortProducts: (sortBy: string, sortOrder: string) => void;
+	onChangeSortBy: (e: any) => void;
+	onChangeSortOrder: () => void;
 }
 
 const AppStateContext = createContext<IStateContext>(undefined as any);
@@ -57,12 +61,51 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 	const localCart: IProduct[] | [] = JSON.parse(
 		(isBrowser && localStorage.getItem('ecom_poc:cart')) || '[]'
 	);
-
 	const [products, setProducts] = useState<IProduct[]>([]);
 	const [cart, setCart] = useState<IProduct[]>(localCart);
 	const [openCartDropdown, setOpenCartDropdown] = useState<boolean>(false);
 	const openDropdown = () => setOpenCartDropdown(true);
 	const closeDropdown = () => setOpenCartDropdown(false);
+
+	// sort feature
+	const [sortBy, setSortBy] = useState<'price' | 'alphabetically'>('price');
+	const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
+
+	const sortProducts = useCallback(
+		(sortBy: string, sortOrder: string) => {
+			const sortedProducts = products.sort((a, b) => {
+				if (sortBy === 'alphabetically') {
+					if (sortOrder === 'asc') {
+						return a.name > b.name ? 1 : -1;
+					}
+					return a.name < b.name ? 1 : -1;
+				} else {
+					if (sortOrder === 'asc') {
+						return a.price > b.price ? 1 : -1;
+					}
+					return a.price < b.price ? 1 : -1;
+				}
+			});
+
+			setProducts(sortedProducts);
+		},
+		[products]
+	);
+
+	const onChangeSortBy = useCallback(
+		(e: any) => {
+			const value = e.target.value;
+			setSortBy(value);
+			sortProducts(value, sortOrder);
+		},
+		[sortOrder, sortProducts]
+	);
+
+	const onChangeSortOrder = useCallback(() => {
+		const value = sortOrder === 'asc' ? 'desc' : 'asc';
+		setSortOrder(value);
+		sortProducts(sortBy, value);
+	}, [sortOrder, sortBy, sortProducts]);
 
 	const addToCart = useCallback((product: IProduct) => {
 		setCart((prev) => {
@@ -90,8 +133,23 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 			openCartDropdown,
 			openDropdown,
 			closeDropdown,
+			sortProducts,
+			sortBy,
+			onChangeSortBy,
+			onChangeSortOrder,
 		}),
-		[products, cart, addToCart, clearCart, openCartDropdown]
+		[
+			products,
+			cart,
+			addToCart,
+			clearCart,
+			openCartDropdown,
+			sortBy,
+			setProducts,
+			sortProducts,
+			onChangeSortOrder,
+			onChangeSortBy,
+		]
 	);
 
 	return (
