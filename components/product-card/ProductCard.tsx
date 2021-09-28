@@ -21,6 +21,7 @@ const ProductCard: FC<IProps> = ({ product }) => {
 					alt={product.image.alt}
 					layout='fill'
 					objectFit='cover'
+					loading='eager'
 				/>
 
 				{product.isBestseller && (
