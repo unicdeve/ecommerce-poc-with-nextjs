@@ -5,13 +5,11 @@ import {
 	SetStateAction,
 	useCallback,
 	useContext,
-	useEffect,
 	useMemo,
 	useState,
 } from 'react';
 import { isBrowser } from '../utils/is-browser';
 import { sortAllProducts } from '../utils/sort-products';
-import { PAGINATE_BY, useProductPagination } from './pagination';
 
 interface IImage {
 	src: string;
@@ -50,6 +48,7 @@ export interface IStateContext {
 	products: IProduct[];
 	filteredProducts: IProduct[];
 	setProducts: Dispatch<SetStateAction<IProduct[]>>;
+	setFilteredProducts: Dispatch<SetStateAction<IProduct[]>>;
 	cart: IProduct[];
 	addToCart: (cart: IProduct) => void;
 	clearCart: () => void;
@@ -89,7 +88,7 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 				sortBy,
 				sortOrder
 			);
-			setProducts(sortedProducts);
+			setFilteredProducts(sortedProducts);
 		},
 		[filteredProducts]
 	);
@@ -115,7 +114,6 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 	const onChangeCategories = useCallback(
 		(checked: boolean, category: string) => {
 			const newCategories = { [category]: checked, ...categories };
-			setCategories(newCategories);
 
 			const stringValue = Object.keys(newCategories)
 				.filter((key) => newCategories[key])
@@ -125,6 +123,7 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 				stringValue.includes(p.category)
 			);
 			setFilteredProducts(filteredProducts);
+			setCategories(newCategories);
 		},
 		[categories, products]
 	);
@@ -146,16 +145,16 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 	}, []);
 
 	// Pagination calculation
-	const { pageOffset } = useProductPagination();
+	// const { pageOffset } = useProductPagination();
 
-	useEffect(() => {
-		const paginatedProduct = products.slice(
-			pageOffset,
-			pageOffset + PAGINATE_BY
-		);
-		setFilteredProducts(paginatedProduct);
-		isBrowser && window.scrollTo(0, 1000);
-	}, [pageOffset, products]);
+	// useEffect(() => {
+	// 	const paginatedProduct = products.slice(
+	// 		pageOffset,
+	// 		pageOffset + PAGINATE_BY
+	// 	);
+	// 	setFilteredProducts(paginatedProduct);
+	// 	isBrowser && window.scrollTo(0, 1000);
+	// }, [pageOffset, products]);
 
 	const value = useMemo(
 		() => ({
@@ -175,6 +174,7 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 			onChangeSortOrder,
 			onChangeCategories,
 			categories,
+			setFilteredProducts,
 		}),
 		[
 			products,
@@ -185,6 +185,7 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 			openCartDropdown,
 			sortBy,
 			setProducts,
+			setFilteredProducts,
 			sortProducts,
 			onChangeSortOrder,
 			onChangeSortBy,

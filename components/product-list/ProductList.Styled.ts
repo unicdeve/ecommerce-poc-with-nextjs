@@ -14,7 +14,6 @@ export const StyledProductList = styled.div`
 			width: 72%;
 			display: flex;
 			justify-content: space-between;
-			align-items: center;
 			flex-wrap: wrap;
 		}
 	}
