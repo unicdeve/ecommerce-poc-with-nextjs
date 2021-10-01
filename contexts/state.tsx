@@ -113,11 +113,13 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 
 	const onChangeCategories = useCallback(
 		(checked: boolean, category: string) => {
-			const newCategories = { [category]: checked, ...categories };
+			const newCategories = { ...categories, [category]: checked };
 
 			const stringValue = Object.keys(newCategories)
 				.filter((key) => newCategories[key])
 				.join('');
+
+			console.log('newCategories', newCategories, stringValue, checked);
 
 			const filteredProducts = products.filter((p) =>
 				stringValue.includes(p.category)
