@@ -5,7 +5,7 @@ import { priceRanges } from '../../mock-ups/price-ranges.mock';
 import { StyledProductListSidebar } from './ProductListSidebar.Styled';
 
 const ProductListSidebar: FC = () => {
-	const { onChangeCategories } = useAppStateContext();
+	const { onChangeCategories, onChangePriceRange } = useAppStateContext();
 
 	return (
 		<StyledProductListSidebar>
@@ -32,7 +32,14 @@ const ProductListSidebar: FC = () => {
 			<div className='categories d-flex flex-col'>
 				{priceRanges.map(({ id, name, label, lower, upper }) => (
 					<div key={id} className='category-wrapper'>
-						<input type='checkbox' id={id} name={name} value={upper} />
+						<input
+							type='checkbox'
+							id={id}
+							name={name}
+							onChange={(e) =>
+								onChangePriceRange(name, e.target.checked, lower, upper)
+							}
+						/>
 						<label htmlFor={id}>{label}</label>
 					</div>
 				))}

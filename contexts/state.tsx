@@ -41,7 +41,7 @@ export interface IProduct {
 	details: IDetails | null;
 }
 
-interface ICategories {
+interface IFilters {
 	[category: string]: boolean;
 }
 export interface IStateContext {
@@ -60,7 +60,14 @@ export interface IStateContext {
 	onChangeSortBy: (e: any) => void;
 	onChangeSortOrder: () => void;
 	onChangeCategories: (checked: boolean, name: string) => void;
-	categories: ICategories;
+	categories: IFilters;
+	onChangePriceRange: (
+		name: string,
+		checked: boolean,
+		lower: number,
+		upper: number
+	) => void;
+	priceRange: any;
 }
 
 const AppStateContext = createContext<IStateContext>(undefined as any);
@@ -109,7 +116,7 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 	}, [sortOrder, sortBy, sortProducts]);
 
 	// category filtering feature
-	const [categories, setCategories] = useState<ICategories>({});
+	const [categories, setCategories] = useState<IFilters>({});
 
 	const onChangeCategories = useCallback(
 		(checked: boolean, category: string) => {
@@ -119,8 +126,7 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 				.filter((key) => newCategories[key])
 				.join('');
 
-			console.log('newCategories', newCategories, stringValue, checked);
-
+			// TODO: filter based on price range
 			const filteredProducts = products.filter((p) =>
 				stringValue.includes(p.category)
 			);
@@ -128,6 +134,52 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 			setCategories(newCategories);
 		},
 		[categories, products]
+	);
+
+	// price-range filtering feature
+	const [priceRange, setPriceRange] = useState<any>({});
+
+	// FIXME: needs rework
+	const onChangePriceRange = useCallback(
+		(name: string, checked: boolean, lower: number, upper: number) => {
+			let newPriceRange = { ...priceRange };
+			if (checked) {
+				newPriceRange[name] = { lower, upper };
+			} else {
+				delete newPriceRange[name];
+			}
+
+			const rangeArray = Object.values(newPriceRange).sort((a: any, b: any) =>
+				a.lower > b.lower ? 1 : -1
+			) as any;
+
+			const stringValue = Object.keys(categories)
+				.filter((key) => categories[key])
+				.join('');
+
+			const allProducts = products.filter((p) =>
+				stringValue.includes(p.category)
+			);
+
+			if (rangeArray.length) {
+				const rangedProducts = allProducts.filter((p) => {
+					console.log(
+						'boo',
+						p.price >= rangeArray[0].lower &&
+							p.price <= rangeArray[rangeArray.length - 1].upper
+					);
+					return (
+						p.price >= rangeArray[0].lower &&
+						p.price <= rangeArray[rangeArray.length - 1].upper
+					);
+				});
+
+				setFilteredProducts(allProducts);
+			}
+
+			setPriceRange(newPriceRange);
+		},
+		[priceRange, products, categories]
 	);
 
 	const addToCart = useCallback((product: IProduct) => {
@@ -177,6 +229,8 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 			onChangeCategories,
 			categories,
 			setFilteredProducts,
+			onChangePriceRange,
+			priceRange,
 		}),
 		[
 			products,
@@ -193,6 +247,8 @@ export const AppStateProvider: FC<{}> = ({ children }) => {
 			onChangeSortBy,
 			onChangeCategories,
 			categories,
+			onChangePriceRange,
+			priceRange,
 		]
 	);
 
